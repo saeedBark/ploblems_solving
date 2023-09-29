@@ -5,15 +5,22 @@ main() {
 }
 
 class Solution {
+  List<int> expectedNums = [];
+  int k = 1;
   int removeDuplicates(List<int> nums) {
-    List<int> expectedNums = [];
-    for (var i in nums) {
-      if (!expectedNums.contains(i)) {
-        expectedNums.add(i);
+    if (nums.isEmpty) {
+      return 0;
+    } else if (nums.length == 1) {
+      expectedNums.addAll(nums);
+      return 1;
+    }
+    for (int i = 0; i < nums.length - 1; i++) {
+      if (nums[i] != nums[i + 1]) {
+        nums[k] = nums[i + 1];
+        k++;
       }
     }
-    nums.clear();
-    nums.addAll(expectedNums);
-    return nums.length;
+    expectedNums = nums;
+    return k;
   }
 }
