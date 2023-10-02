@@ -1,9 +1,9 @@
-import 'dart:io';
-
 main() {
   final long = Solution();
   final strs = ["flower", "flw", "floight"];
+  final prefix = ["flower", "flw", "floight"];
   long.longestCommonPrefix(strs);
+  long.longestCommonPrefix(prefix);
 }
 
 class Solution {
