@@ -1,7 +1,5 @@
 main() {
-  final long = Solution();
-  final prefix = ["flower", "flw", "floight"];
-  long.longestCommonPrefix(prefix);
+
 }
 
 class Solution {
