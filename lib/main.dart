@@ -1,4 +1,8 @@
-main() {}
+import 'dart:math';
+
+main() {
+  halfNumber(50);
+}
 
 class Solution {
   String longestCommonPrefix(List<String> strs) {
@@ -14,4 +18,11 @@ class Solution {
 
     return prefixWord;
   }
+}
+
+void halfNumber(num number) {
+  final response = number / 2;
+  final result = 'Half of ' + 'is ' + response.toStringAsFixed(2);
+
+  print(result);
 }
