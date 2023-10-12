@@ -20,9 +20,10 @@ class Solution {
   }
 }
 
-void halfNumber(num number) {
+String halfNumber(num number) {
   final response = number / 2;
+
   final result = 'Half of ' + 'is ' + response.toStringAsFixed(2);
 
-  print(result);
+  return result;
 }
