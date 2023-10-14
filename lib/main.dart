@@ -27,3 +27,11 @@ String halfNumber(num number) {
 
   return result;
 }
+
+String quterNumber(num number) {
+  final response = number / 4;
+
+  final result = 'Half of ' + 'is ' + response.toStringAsFixed(2);
+
+  return result;
+}
