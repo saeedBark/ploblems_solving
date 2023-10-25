@@ -13,3 +13,23 @@ class Solution {
     return nums.length;
   }
 }
+
+// another  response
+
+class Solution2 {
+  int removeElement(List<int> nums, int val) {
+    List expectedNums = [];
+
+    for (final number in nums) {
+      if (number == val) {
+        expectedNums.add(number);
+      }
+    }
+
+    expectedNums.sort();
+
+    final k = expectedNums.length;
+
+    return k;
+  }
+}
