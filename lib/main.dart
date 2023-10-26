@@ -4,18 +4,31 @@ main() {
   print(removeRep);
 }
 
-// class Solution2 {
-//   int removeElement(List<int> nums, int val) {
-//     for (int i = 0; i < nums.length; i++) {
-//       nums.remove(val);
-//     }
-//     nums.remove(val);
-//     return nums.length;
-//   }
-// }
+class Solution {
+  int removeElement(List<int> nums, int val) {
+    int t = 0;
+    for (int i = 0; i < nums.length; i++) {
+      if (nums[i] != val) {
+        nums[t] = nums[i];
+        t++;
+      }
+    }
+    return t;
+  }
+}
+
+class Solution1 {
+  int removeElement(List<int> nums, int val) {
+    for (int i = 0; i < nums.length; i++) {
+      nums.remove(val);
+    }
+    nums.remove(val);
+    return nums.length;
+  }
+}
 
 // another  response
-class Solution {
+class Solution2 {
   int removeElement(List<int> nums, int val) {
     for (int number = 0; number < nums.length; number++) {
       if (nums[number] != val) {
