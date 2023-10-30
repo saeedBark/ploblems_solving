@@ -1,7 +1,11 @@
 main() {
-  final solution = Solution();
-  final removeRep = solution.removeElement([1, 5, 1, 2], 5);
-  print(removeRep);
+  // final solution = Solution();
+  // final removeRep = solution.removeElement([1, 5, 1, 2], 5);
+  // print(removeRep);
+  final calculate = Calculate();
+  final result = calculate.caluclate(100, 0.05, 30);
+
+  print(result);
 }
 
 class Solution {
@@ -39,5 +43,19 @@ class Solution2 {
     final k = nums.length;
 
     return k;
+  }
+}
+
+class Calculate {
+  double caluclate(double usdt, double percentage, int day) {
+    double result = 0;
+    double response = 0;
+    double usdtx = usdt;
+    for (int i = 0; i < day; i++) {
+      response = usdtx * percentage;
+
+      result = result + response;
+    }
+    return result;
   }
 }
