@@ -1,37 +1,23 @@
 import 'dart:math';
 
 main() {
-  halfNumber(50);
+  final sultion = Solution();
+  final result = sultion.searchInsert([1, 2, 4], 3);
+  print(result);
 }
 
 class Solution {
-  String longestCommonPrefix(List<String> strs) {
-    if (strs.isEmpty) return "";
-
-    String prefixWord = strs[0];
-    for (int i = 1; i < strs.length; i++) {
-      while (!strs[i].startsWith(prefixWord)) {
-        prefixWord = prefixWord.substring(0, prefixWord.length - 1);
-        if (prefixWord.isEmpty) return "";
+  int searchInsert(List<int> nums, int target) {
+    for (int i = 0; i < nums.length; i++) {
+      if (nums[i] == target) {
+        return i;
       }
     }
-
-    return prefixWord;
+    for (int i = 0; i < nums.length; i++) {
+      if (nums[i] > target) {
+        return i;
+      }
+    }
+    return nums.length;
   }
-}
-
-String halfNumber(num number) {
-  final response = number / 2;
-
-  final result = 'Half of ' + 'is ' + response.toStringAsFixed(2);
-
-  return result;
-}
-
-String quterNumber(num number) {
-  final response = number / 4;
-
-  final result = 'Half of ' + 'is ' + response.toStringAsFixed(2);
-
-  return result;
 }
