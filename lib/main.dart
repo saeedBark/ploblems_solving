@@ -3,24 +3,44 @@ import 'dart:math';
 main() {
   final solution = Solution();
 
-  final result = solution.plusOne([1, 2, 3]);
+  final result = solution.plusOne([9, 9]);
   print(result);
 }
 
 class Solution {
   List<int> plusOne(List<int> digits) {
-    int result = 0;
-
-    for (final digit in digits) {
-      result = result + digit;
+    if (digits.last < 9) {
+      return lessThanNine(digits);
     }
-
-    result++;
-
-    List<String> newDigitsString = result.toString().split('').toList();
-
-    List<int> newDigits = newDigitsString.map((x) => int.parse(x)).toList();
-
-    return newDigits;
+    return lastEquelNine(digits);
   }
+}
+
+List<int> lessThanNine(List<int> digits) {
+  final response = digits.join('');
+
+  int result = int.parse(response);
+
+  result++;
+
+  List<String> newDigitsString = result.toString().split('').toList();
+
+  List<int> newDigits = newDigitsString.map((x) => int.parse(x)).toList();
+
+  return newDigits;
+}
+
+List<int> lastEquelNine(List<int> digits) {
+  final response = digits.join('');
+
+  int result = int.parse(response);
+
+  List<String> newDigitsString = result.toString().split('').toList();
+
+  List<int> newDigits = newDigitsString.map((x) => int.parse(x)).toList();
+
+  newDigits.removeLast();
+  newDigits.addAll([1, 0]);
+
+  return newDigits;
 }
