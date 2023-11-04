@@ -1,19 +1,25 @@
 import 'dart:math';
 
-main() {
-  final solution = Solution();
-  final climb = solution.climbStairs(0);
-  print(climb);
+main() {}
+
+//* Definition for singly-linked list.
+class ListNode {
+  int val;
+  ListNode? next;
+  ListNode([this.val = 0, this.next]);
 }
 
 class Solution {
-  int climbStairs(int n) {
-    if (n <= 0) return 0;
+  ListNode? deleteDuplicates(ListNode? head) {
+    ListNode? temp = head;
 
-    if (n == 2) return 2;
-
-    final steps = (n - 1) + (n - 2);
-
-    return steps;
+    while (temp?.next != null) {
+      if (temp?.val == temp?.next?.val) {
+        temp?.next = temp.next?.next;
+      } else {
+        temp = temp?.next;
+      }
+    }
+    return head;
   }
 }
