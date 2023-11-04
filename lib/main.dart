@@ -1,37 +1,25 @@
 import 'dart:math';
 
-main() {
-  halfNumber(50);
+main() {}
+
+//* Definition for singly-linked list.
+class ListNode {
+  int val;
+  ListNode? next;
+  ListNode([this.val = 0, this.next]);
 }
 
 class Solution {
-  String longestCommonPrefix(List<String> strs) {
-    if (strs.isEmpty) return "";
+  ListNode? deleteDuplicates(ListNode? head) {
+    ListNode? temp = head;
 
-    String prefixWord = strs[0];
-    for (int i = 1; i < strs.length; i++) {
-      while (!strs[i].startsWith(prefixWord)) {
-        prefixWord = prefixWord.substring(0, prefixWord.length - 1);
-        if (prefixWord.isEmpty) return "";
+    while (temp?.next != null) {
+      if (temp?.val == temp?.next?.val) {
+        temp?.next = temp.next?.next;
+      } else {
+        temp = temp?.next;
       }
     }
-
-    return prefixWord;
+    return head;
   }
-}
-
-String halfNumber(num number) {
-  final response = number / 2;
-
-  final result = 'Half of ' + 'is ' + response.toStringAsFixed(2);
-
-  return result;
-}
-
-String quterNumber(num number) {
-  final response = number / 4;
-
-  final result = 'Half of ' + 'is ' + response.toStringAsFixed(2);
-
-  return result;
 }
