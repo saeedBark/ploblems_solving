@@ -1,6 +1,9 @@
 import 'dart:math';
 
-main() {}
+main() {
+  final listNode = Solution();
+  listNode.deleteDuplicates(ListNode(1, ListNode(2, ListNode(2, ListNode(1)))));
+}
 
 //* Definition for singly-linked list.
 class ListNode {
@@ -11,15 +14,14 @@ class ListNode {
 
 class Solution {
   ListNode? deleteDuplicates(ListNode? head) {
-    ListNode? temp = head;
+    ListNode? listNode = head;
 
-    while (temp?.next != null) {
-      if (temp?.val == temp?.next?.val) {
-        temp?.next = temp.next?.next;
-      } else {
-        temp = temp?.next;
+    while (listNode?.next != null) {
+      if (listNode?.val == listNode?.next!.val) {
+        listNode?.next = listNode.next;
       }
+      listNode = listNode?.next;
     }
-    return head;
+    return listNode;
   }
 }
