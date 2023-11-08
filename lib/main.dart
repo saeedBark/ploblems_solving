@@ -1,14 +1,31 @@
 main() {
   final solution = Solution();
-  solution.merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3);
+  solution.inorderTraversal(
+    TreeNode(
+      2,
+      null,
+      TreeNode(5, TreeNode(6)),
+    ),
+  );
+}
+
+class TreeNode {
+  int val;
+  TreeNode? left;
+  TreeNode? right;
+  TreeNode([this.val = 0, this.left, this.right]);
 }
 
 class Solution {
-  void merge(List<int> nums1, int m, List<int> nums2, int n) {
-    nums1.removeRange(m, nums1.length);
-    nums2.removeRange(n, nums2.length);
+  List<int> inorderTraversal(TreeNode? root) {
+    List<int> result = [];
 
-    nums1.addAll(nums2);
-    nums1.sort();
+    if (root != null) {
+      result.addAll(inorderTraversal(root.left));
+      result.add(root.val);
+      result.addAll(inorderTraversal(root.right));
+    }
+
+    return result;
   }
 }
