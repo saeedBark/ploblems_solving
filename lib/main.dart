@@ -17,14 +17,13 @@ class TreeNode {
 }
 
 class Solution {
-  List<int> inorderTraversal(TreeNode? root) {
+  bool isSameTree(TreeNode? root1, TreeNode? root2) {
     List<int> result = [];
 
-    if (root != null) {
-      result.addAll(inorderTraversal(root.left));
-      result.add(root.val);
-      result.addAll(inorderTraversal(root.right));
-    }
+    if (root1 == null && root2 == null) return true;
+    for (int i = 0; i < root1.left;) result.addAll(isSameTree(root1!.left));
+    result.add(root1.val);
+    result.addAll(isSameTree(root.right));
 
     return result;
   }
