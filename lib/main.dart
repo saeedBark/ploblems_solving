@@ -1,37 +1,30 @@
-import 'dart:math';
-
 main() {
-  halfNumber(50);
+  final solution = Solution();
+  solution.inorderTraversal(
+    TreeNode(
+      2,
+      null,
+      TreeNode(5, TreeNode(6)),
+    ),
+  );
+}
+
+class TreeNode {
+  int val;
+  TreeNode? left;
+  TreeNode? right;
+  TreeNode([this.val = 0, this.left, this.right]);
 }
 
 class Solution {
-  String longestCommonPrefix(List<String> strs) {
-    if (strs.isEmpty) return "";
+  bool isSameTree(TreeNode? root1, TreeNode? root2) {
+    List<int> result = [];
 
-    String prefixWord = strs[0];
-    for (int i = 1; i < strs.length; i++) {
-      while (!strs[i].startsWith(prefixWord)) {
-        prefixWord = prefixWord.substring(0, prefixWord.length - 1);
-        if (prefixWord.isEmpty) return "";
-      }
-    }
+    if (root1 == null && root2 == null) return true;
+    for (int i = 0; i < root1.left;) result.addAll(isSameTree(root1!.left));
+    result.add(root1.val);
+    result.addAll(isSameTree(root.right));
 
-    return prefixWord;
+    return result;
   }
-}
-
-String halfNumber(num number) {
-  final response = number / 2;
-
-  final result = 'Half of ' + 'is ' + response.toStringAsFixed(2);
-
-  return result;
-}
-
-String quterNumber(num number) {
-  final response = number / 4;
-
-  final result = 'Half of ' + 'is ' + response.toStringAsFixed(2);
-
-  return result;
 }
