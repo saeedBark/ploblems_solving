@@ -1,37 +1,29 @@
-import 'dart:math';
-
 main() {
-  halfNumber(50);
+  final solution = Solution();
+  final response = solution.isPalindrome("A man, a plan, a canal: Panama");
+  print(response);
 }
 
 class Solution {
-  String longestCommonPrefix(List<String> strs) {
-    if (strs.isEmpty) return "";
+  bool isPalindrome(String s) {
+    if (s.isEmpty) return true;
 
-    String prefixWord = strs[0];
-    for (int i = 1; i < strs.length; i++) {
-      while (!strs[i].startsWith(prefixWord)) {
-        prefixWord = prefixWord.substring(0, prefixWord.length - 1);
-        if (prefixWord.isEmpty) return "";
-      }
-    }
+    final response = removeNonAlphabetic(s);
 
-    return prefixWord;
+    final sToLowerCase = response.toLowerCase();
+
+    final result = response.split('').reversed.toList().join();
+
+    final mToLowerCase = result.toLowerCase();
+
+    if (sToLowerCase != mToLowerCase) return false;
+
+    return true;
   }
-}
 
-String halfNumber(num number) {
-  final response = number / 2;
+  String removeNonAlphabetic(String s) {
+    RegExp regExp = RegExp(r'[^a-zA-Z0-9]');
 
-  final result = 'Half of ' + 'is ' + response.toStringAsFixed(2);
-
-  return result;
-}
-
-String quterNumber(num number) {
-  final response = number / 4;
-
-  final result = 'Half of ' + 'is ' + response.toStringAsFixed(2);
-
-  return result;
+    return s.replaceAll(regExp, '');
+  }
 }
