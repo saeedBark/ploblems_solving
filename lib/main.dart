@@ -1,29 +1,19 @@
 main() {
   final solution = Solution();
-  final response = solution.isPalindrome("A man, a plan, a canal: Panama");
+  final response = solution.convertToTitle(150);
   print(response);
 }
 
 class Solution {
-  bool isPalindrome(String s) {
-    if (s.isEmpty) return true;
+  String convertToTitle(int columnNumber) {
+    String result = '';
 
-    final response = removeNonAlphabetic(s);
+    while (columnNumber > 0) {
+      int remainder = (columnNumber - 1) % 26;
+      result = String.fromCharCode('A'.codeUnitAt(0) + remainder) + result;
+      columnNumber = (columnNumber - 1) ~/ 26;
+    }
 
-    final sToLowerCase = response.toLowerCase();
-
-    final result = response.split('').reversed.toList().join();
-
-    final mToLowerCase = result.toLowerCase();
-
-    if (sToLowerCase != mToLowerCase) return false;
-
-    return true;
-  }
-
-  String removeNonAlphabetic(String s) {
-    RegExp regExp = RegExp(r'[^a-zA-Z0-9]');
-
-    return s.replaceAll(regExp, '');
+    return result;
   }
 }
