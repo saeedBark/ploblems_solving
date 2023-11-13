@@ -1,18 +1,29 @@
 main() {
   final solution = Solution();
-  final response = solution.isSymmetric(TreeNode(2, TreeNode(3), null));
+  final response = solution.isPalindrome("A man, a plan, a canal: Panama");
   print(response);
 }
 
-class TreeNode {
-  int val;
-  TreeNode? left;
-  TreeNode? right;
-  TreeNode([this.val = 0, this.left, this.right]);
-}
-
 class Solution {
-  bool isSymmetric(TreeNode? root) {
+  bool isPalindrome(String s) {
+    if (s.isEmpty) return true;
+
+    final response = removeNonAlphabetic(s);
+
+    final sToLowerCase = response.toLowerCase();
+
+    final result = response.split('').reversed.toList().join();
+
+    final mToLowerCase = result.toLowerCase();
+
+    if (sToLowerCase != mToLowerCase) return false;
+
     return true;
+  }
+
+  String removeNonAlphabetic(String s) {
+    RegExp regExp = RegExp(r'[^a-zA-Z0-9]');
+
+    return s.replaceAll(regExp, '');
   }
 }
