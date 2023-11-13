@@ -1,37 +1,19 @@
-import 'dart:math';
-
 main() {
-  halfNumber(50);
+  final solution = Solution();
+  final response = solution.convertToTitle(150);
+  print(response);
 }
 
 class Solution {
-  String longestCommonPrefix(List<String> strs) {
-    if (strs.isEmpty) return "";
+  String convertToTitle(int columnNumber) {
+    String result = '';
 
-    String prefixWord = strs[0];
-    for (int i = 1; i < strs.length; i++) {
-      while (!strs[i].startsWith(prefixWord)) {
-        prefixWord = prefixWord.substring(0, prefixWord.length - 1);
-        if (prefixWord.isEmpty) return "";
-      }
+    while (columnNumber > 0) {
+      int remainder = (columnNumber - 1) % 26;
+      result = String.fromCharCode('A'.codeUnitAt(0) + remainder) + result;
+      columnNumber = (columnNumber - 1) ~/ 26;
     }
 
-    return prefixWord;
+    return result;
   }
-}
-
-String halfNumber(num number) {
-  final response = number / 2;
-
-  final result = 'Half of ' + 'is ' + response.toStringAsFixed(2);
-
-  return result;
-}
-
-String quterNumber(num number) {
-  final response = number / 4;
-
-  final result = 'Half of ' + 'is ' + response.toStringAsFixed(2);
-
-  return result;
 }
