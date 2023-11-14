@@ -1,19 +1,18 @@
 main() {
   final solution = Solution();
-  final response = solution.convertToTitle(150);
+  final response = solution.titleToNumber('CB');
   print(response);
 }
 
 class Solution {
-  String convertToTitle(int columnNumber) {
-    String result = '';
+  int titleToNumber(String columnTitle) {
+    int result = 0;
 
-    while (columnNumber > 0) {
-      int remainder = (columnNumber - 1) % 26;
-      result = String.fromCharCode('A'.codeUnitAt(0) + remainder) + result;
-      columnNumber = (columnNumber - 1) ~/ 26;
+    for (int i = 0; i < columnTitle.length; i++) {
+      int remaind = columnTitle.codeUnits[0] - 64;
+
+      result = result * 26 + remaind;
     }
-
     return result;
   }
 }
