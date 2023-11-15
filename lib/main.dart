@@ -16,3 +16,16 @@ class Solution {
     return result;
   }
 }
+
+class Solution2 {
+  int titleToNumber(String columnTitle) {
+    int result = 0;
+
+    for (int i = 0; i < columnTitle.length; i++) {
+      int charValue = columnTitle.codeUnitAt(i) - 'A'.codeUnitAt(0) + 1;
+      result = result * 26 + charValue;
+    }
+
+    return result;
+  }
+}
