@@ -1,31 +1,19 @@
 main() {
   final solution = Solution();
-  final response = solution.titleToNumber('CB');
+  final response = solution.isIsomorphic('saeed', 'ahrrd');
   print(response);
 }
 
 class Solution {
-  int titleToNumber(String columnTitle) {
-    int result = 0;
-
-    for (int i = 0; i < columnTitle.length; i++) {
-      int remaind = columnTitle.codeUnits[i] - 64;
-
-      result = result * 26 + remaind;
+  bool isIsomorphic(String s, String t) {
+    if (s.length != t.length) return false;
+    List<int> sA = [];
+    List<int> tA = [];
+    for (int i = 0; i < s.length; i++) {
+      sA.add(s.indexOf(s[i]));
+      tA.add(t.indexOf(t[i]));
+      if (sA[i] != tA[i]) return false;
     }
-    return result;
-  }
-}
-
-class Solution2 {
-  int titleToNumber(String columnTitle) {
-    int result = 0;
-
-    for (int i = 0; i < columnTitle.length; i++) {
-      int charValue = columnTitle.codeUnitAt(i) - 'A'.codeUnitAt(0) + 1;
-      result = result * 26 + charValue;
-    }
-
-    return result;
+    return true;
   }
 }
