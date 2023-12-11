@@ -1,19 +1,23 @@
 main() {
   final solution = Solution();
-  final response = solution.isIsomorphic('saeed', 'ahrrd');
+  final response = solution.isAnagram('saeed', 'daese');
   print(response);
 }
 
 class Solution {
-  bool isIsomorphic(String s, String t) {
+  bool isAnagram(String s, String t) {
     if (s.length != t.length) return false;
-    List<int> sA = [];
-    List<int> tA = [];
-    for (int i = 0; i < s.length; i++) {
-      sA.add(s.indexOf(s[i]));
-      tA.add(t.indexOf(t[i]));
-      if (sA[i] != tA[i]) return false;
-    }
+
+    final sortS = s.split('');
+    sortS.sort();
+    final resultS = sortS.join('');
+
+    final sortT = t.split('');
+    sortT.sort();
+    final resultT = sortT.join('');
+
+    if (resultS != resultT) return false;
+
     return true;
   }
 }
