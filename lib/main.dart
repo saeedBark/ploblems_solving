@@ -1,9 +1,9 @@
 
 main() {
-  Solution solution = Solution();
+
+  final solution = Solution();
  
- final result =solution.addTwoNumbers(ListNode(5,ListNode(6,ListNode(4))),ListNode(2,ListNode(3,ListNode(4))));
- print(result);
+ solution.addTwoNumbers(ListNode(5,ListNode(6,ListNode(4))),ListNode(2,ListNode(3,ListNode(4))));
 }
 
   class ListNode {
@@ -40,3 +40,4 @@ class Solution {
 }
 
 
+ 
