@@ -26,7 +26,7 @@ class Solution {
               l2 = l2.next; 
       }
     
-     final sum = ( BigInt.parse(newL1.join('')) +  BigInt.parse(newL2.join('')) );
+     final sum = ( int.parse(newL1.join('')) +  int.parse(newL2.join('')) );
      final reversedSumList = sum.toString().split('').reversed;
      final nodes = reversedSumList.map((e)=>ListNode(int.parse(e))).toList();
 
