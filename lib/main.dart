@@ -27,10 +27,10 @@ class Solution {
       }
     
      final sum = ( int.parse(newL1.join('')) +  int.parse(newL2.join('')) );
-     final reversedSumList = sum.toString().split('').reversed;
+     final reversedSumList = sum.toString().split('').reversed.toList();
      final nodes = reversedSumList.map((e)=>ListNode(int.parse(e))).toList();
 
-     for(var i =0 ; i<nodes.length-1; i++){
+     for(int i =0 ; i<nodes.length-1; i++){
              nodes[i].next = nodes[i+1];
      }  
      finalListNode = nodes[0];
