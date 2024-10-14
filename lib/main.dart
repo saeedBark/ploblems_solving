@@ -63,11 +63,27 @@ class SolutionBruteForce {
     return [];
   }
 }
-// write comment for push this code to github 
-// this code is for two sum problem
-// the problem is to find two number in the array that their sum is equal to the target
-// the solution is to use a hashmap to store the value and the index of the number o(n)
-// then use another for loop to find the solution o(n^2)
-// the benfit of this solution is that it is more efficient than the brute force solution
-// but the benfit of the brute force solution is that it is more efficient than the brute force solution
 
+// this class is for o(n) solution mean using hashmap to store the value and the index of the number
+
+class SolutionHash {
+  List<int> twoSum(List<int> nums, int target) {
+    Map<int, int> numMap = {};
+
+    // First pass: Build the hash table
+    for (int i = 0; i < nums.length; i++) {
+      numMap[nums[i]] = i;
+    }
+
+    // Second pass: Check for complements
+    for (int i = 0; i < nums.length; i++) {
+      int complement = target - nums[i];
+      if (numMap.containsKey(complement) && numMap[complement] != i) {
+        return [i, numMap[complement]!];
+      }
+    }
+
+    // If no solution is found
+    return [];
+  }
+}
