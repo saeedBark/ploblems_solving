@@ -59,3 +59,34 @@ class SolutionLongestSubstringNoMax {
 }
 // these solution for longest substring without repeating characters
 // these are the same solution but the second one is more readable and easier to understand
+
+// this is third solution
+
+class SolutionLongestSubstringNo {
+  /// Finds the length of the longest substring without repeating characters.
+  int lengthOfLongestSubstring(String s) {
+    if (s.isEmpty) return 0;
+
+    Set<String> charSet = {};
+    int left = 0;
+    int maxLength = 0;
+
+    for (int right = 0; right < s.length; right++) {
+      String currentChar = s[right];
+
+      while (charSet.contains(currentChar)) {
+        charSet.remove(s[left]);
+        left++;
+      }
+
+      charSet.add(currentChar);
+
+      int currentLength = right - left + 1;
+      if (currentLength > maxLength) {
+        maxLength = currentLength;
+      }
+    }
+
+    return maxLength;
+  }
+}
