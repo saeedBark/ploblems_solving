@@ -1,92 +1,20 @@
-import 'dart:math';
-
 main() {
-  final solution = SolutionLongestSubstring();
+  final solution = Solution();
 
-  solution.lengthOfLongestSubstring('pwwkew');
+  solution.reverse(123);
 }
 
-class SolutionLongestSubstring {
-  /// Finds the length of the longest substring without repeating characters.
-  int lengthOfLongestSubstring(String s) {
-    if (s.isEmpty) return 0;
-
-    Set<String> charSet = {};
-    int left = 0;
-    int maxLength = 0;
-
-    for (int right = 0; right < s.length; right++) {
-      while (charSet.contains(s[right])) {
-        charSet.remove(s[left]);
-        left++;
-      }
-      charSet.add(s[right]);
-      maxLength = max(maxLength, right - left + 1);
+class Solution {
+  int reverse(int x) {
+    int reversed = 0;
+    while (x != 0) {
+      int digit = x % 10;
+      x = x ~/ 10;
+      reversed = reversed * 10 + digit;
     }
-
-    return maxLength;
+    return reversed;
   }
 }
+//the second solution
 
-class SolutionLongestSubstringNoMax {
-  /// Finds the length of the longest substring without repeating characters.
-  int lengthOfLongestSubstring(String s) {
-    if (s.isEmpty) return 0;
 
-    Set<String> charSet = {};
-    int left = 0;
-    int maxLength = 0;
-
-    for (int right = 0; right < s.length; right++) {
-      String currentChar = s[right];
-
-      while (charSet.contains(currentChar)) {
-        charSet.remove(s[left]);
-        left++;
-      }
-
-      charSet.add(currentChar);
-
-      // Update maxLength without using the max function
-      int currentLength = right - left + 1;
-      if (currentLength > maxLength) {
-        maxLength = currentLength;
-      }
-    }
-
-    return maxLength;
-  }
-}
-// these solution for longest substring without repeating characters
-// these are the same solution but the second one is more readable and easier to understand
-
-// this is third solution
-
-class SolutionLongestSubstringNo {
-  /// Finds the length of the longest substring without repeating characters.
-  int lengthOfLongestSubstring(String s) {
-    if (s.isEmpty) return 0;
-
-    Set<String> charSet = {};
-    int left = 0;
-    int maxLength = 0;
-
-    for (int right = 0; right < s.length; right++) {
-      String currentChar = s[right];
-
-      while (charSet.contains(currentChar)) {
-        charSet.remove(s[left]);
-        left++;
-      }
-
-      charSet.add(currentChar);
-
-      int currentLength = right - left + 1;
-      if (currentLength > maxLength) {
-        maxLength = currentLength;
-      }
-    }
-
-    return maxLength;
-  }
-}
